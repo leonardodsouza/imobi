@@ -1,0 +1,111 @@
+<div class="panel panel-default">
+   
+    <div class="panel-heading">
+        <h3>
+           <%= number_to_currency_br(@imovel.valor) %>
+        </h3>
+    </div>
+
+    <ul class="list-group">
+        
+
+        <li class="list-group-item label-group">
+            <div class="label-descricao">
+                <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                <strong>Código:</strong>
+            </div>
+            <div class="label-dados">    
+                <%= @imovel.id %>
+            </div>    
+        </li>
+
+        <li class="list-group-item label-group">
+            <div class="label-descricao">
+                <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                <strong>Para:</strong>
+            </div>    
+            <div class="label-dados">  
+                <%= @imovel.categoria.nome.downcase %>
+            </div>
+            
+        </li>
+        
+        <li class="list-group-item label-group">
+            <div class="label-descricao">
+                <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                <strong>Situacao:</strong>
+            </div>
+            <div class="label-dados">     
+                <%= situacao(@imovel.situacao_id, @imovel.situacao.nome) %>
+            </div>    
+        </li>
+
+        <li class="list-group-item label-group">
+            <div class="label-descricao">
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                <strong>Cidade:</strong>
+            </div> 
+            <div class="label-dados">    
+                <%= @imovel.cidade.nome %>
+            </div>
+        </li>
+
+        <li class="list-group-item label-group">
+            <div class="label-descricao">    
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                <strong>Bairro:</strong>
+            </div>   
+            <div class="label-dados">  
+                <%= @imovel.bairro.nome %>
+            </div>
+        </li>
+
+        <% if @imovel.dormitorios.present? %>
+            <li class="list-group-item label-group">
+                <div class="label-descricao">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    <strong>Dormitorios:</strong>
+                </div>
+                <div class="label-dados">     
+                    <%= @imovel.dormitorios %>
+                </div>
+            </li>
+        <%end%>
+        
+        <% if @imovel.banheiros.present? %>
+            <li class="list-group-item label-group">
+                <div class="label-descricao">
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    <strong>Banheiros:</strong>
+                </div>
+                <div class="label-dados">     
+                    <%= @imovel.banheiros %>
+                </div>
+            </li>
+        <%end%>
+
+        <% if @imovel.garagem.present? %>
+            <li class="list-group-item label-group ">
+                <div class="label-descricao"> 
+                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    <strong>Garagem:</strong>
+                </div> 
+                <div class="label-dados">    
+                    <%= @imovel.garagem %>
+                </div>    
+            </li>
+        <%end%>
+
+        <li class="list-group-item label-group">
+            <div class="label-descricao">
+                <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+                <strong>Area:</strong>
+            </div>    
+            <div class="label-dados"> 
+                <%= @imovel.area %> m²
+            </div>    
+        </li>
+
+    </ul>
+
+</div>

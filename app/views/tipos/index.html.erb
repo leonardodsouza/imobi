@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="page-header">
+        <%= link_to 'Novo tipo', new_tipo_path, class: "btn btn btn-primary" %>
+      </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipos.each do |tipo| %>
+      <tr>
+        <td><%= tipo.nome %></td>
+        <td style="width: 5%;"><%= link_to 'Editar', edit_tipo_path(tipo), class: "btn btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+        </div></div></div>
+
+

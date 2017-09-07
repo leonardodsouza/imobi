@@ -1,0 +1,13 @@
+<div class="panel-body">
+    <table class="table">
+    <tbody>
+        <% @fotos.each do |foto| %>
+        <tr>
+            <td ><%= image_tag foto.img.url(:thumb), class: "img-thumbnail" %></td>
+            <td style="width: 20%"><%= foto.legenda %></td>
+            <td style="width: 5%"><%= link_to 'Deletar', foto, remote: true, method: :delete, data: { confirm: 'Deseja apagar essa foto?' }, class: "btn btn btn-danger" %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+</div>

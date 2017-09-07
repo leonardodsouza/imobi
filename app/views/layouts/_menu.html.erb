@@ -1,0 +1,71 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Navegação</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= image_tag  "logo.png", class: "img-responsive logo" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'INÍCIO', root_path %></li>
+        <% Categoria.all.each do |categoria| %>
+          <li><%= link_to categoria.nome.upcase, imoveis_categoria_path(categoria) %></li>
+        <%end%>
+        <% if usuario_signed_in? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">IMÓVEIS <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><%= link_to 'DESTAQUES', destaques_path %></li>
+              <li><%= link_to 'CIDADES', cidades_path %></li>
+              <li><%= link_to 'CATEGORIAS', categorias_path %></li>
+              <li><%= link_to 'TIPOS', tipos_path %></li>
+            <li><%= link_to 'TODOS OS IMÓVEIS', imoveis_path %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to 'NOVO IMÓVEL', new_imovel_path %></li>
+          </ul>
+        </li>
+        <li><%= link_to 'VISITANTES', visitantes_path %></li>
+        <%else%>
+          <li><%= link_to 'TODOS OS IMÓVEIS', imoveis_path %></li>
+          <li><%= link_to 'CONTATO', new_contato_path, remote: true %></li>
+        <%end%>
+        <li><%= link_to 'ARTIGOS', artigos_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if usuario_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_usuario.nome.upcase %> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'USUÁRIOS', usuarios_path %></li>
+              <li><%= link_to 'ATUALIZAR', edit_usuario_registration_path %></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to 'SAIR', destroy_usuario_session_path, method: :delete %></li>
+            </ul>
+          </li>
+        <%else%>  
+          <li><%= link_to 'LOGIN', new_usuario_session_path %></li>
+        <%end%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="modal fade janela" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 id="titulo" class="modal-title"></h2>
+            </div>
+            <div id="janela"></div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

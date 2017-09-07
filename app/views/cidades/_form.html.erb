@@ -1,0 +1,64 @@
+<%= nested_form_for @cidade do |form| %>
+  <% if @cidade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cidade.errors.count, "error") %> prohibited this cidade from being saved:</h2>
+
+      <ul>
+      <% @cidade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form.label :nome %>
+        <%= form.text_field :nome, id: :cidade_nome, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :estado %>
+        <%= form.select :estado ,
+        [
+          ["AC", "AC"],["AL", "AL"],["AP", "AP"],
+          ["AM", "AM"],["BA", "BA"],["CE", "CE"],
+          ["DF", "DF"],["ES", "ES"],["GO", "GO"],
+          ["MA", "MA"],["MT", "MT"],["MS", "MS"],
+          ["MG", "MG"],["PA", "PA"],["PB", "PB"],
+          ["PR", "PR"],["PB", "PB"],["PI", "PI"],
+          ["RJ", "RJ"],["RN", "RN"],["RS", "RS"],
+          ["RO", "RO"],["RR", "RR"],["SC", "SC"],
+          ["PS", "PS"],["SE", "SE"],["TO", "TO"],
+      
+        ],{prompt: "Selecione o estado"}, {class: "form-control"} %>
+      </div>
+    </div>
+  </div>
+  
+  
+    <%= form.label :bairros %>
+    <%= form.fields_for :bairros do |build| %>
+      <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= build.text_field :nome, class: "form-control" %>  
+            </div>   
+          </div>
+          <div class="col-md-4">
+            <%= build.link_to_remove "Remove" %>
+          </div>
+      </div>
+    <% end %>
+ 
+  
+  <div class="form-group">
+    <%= form.link_to_add "Add", :bairros, class: "btn btn btn-default" %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.submit class: "btn btn btn-primary" %>
+    <%= link_to 'Cancelar', cidades_path, class: "btn btn btn-default" %>
+  </div>
+
+<% end %>

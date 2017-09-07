@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="page-header">
+        <h3>Destaques</h3>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Legenda</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @destaques.each do |destaque| %>
+        <tr>
+          <td><%= destaque.titulo %></td>
+          <td style="width: 5%;"><%= link_to 'Visualizar', destaque, class: "btn btn btn-default" %></td>
+          <td style="width: 5%;"><%= link_to 'Editar', edit_destaque_path(destaque), class: "btn btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+    </div>
+  </div>

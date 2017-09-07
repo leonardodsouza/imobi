@@ -1,0 +1,49 @@
+// Place all the styles related to the imoveis controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.tab-content{
+    min-height: 500px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    background: #fff;
+}
+.nome{
+  
+    border-bottom: 1px solid #ddd;
+}
+.valor{
+
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+.descricao{
+    padding-top: 20px;
+    float: left;
+}
+.visualizar{
+    padding-top: 20px;
+    text-align: right;
+}
+.favorito{
+    font-size: 25px;
+}
+.vendido{
+    position: absolute;
+}
+.label-descricao{
+    width: 50%;
+    float: left;
+    border-left: 4px solid #ddd;
+    padding-left: 4px;
+}
+.label-dados{
+    width: 50%;
+    float: right;
+    text-align: right;
+    
+}
+.label-group{
+    overflow: hidden;
+}

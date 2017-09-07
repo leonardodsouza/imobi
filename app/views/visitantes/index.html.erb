@@ -1,0 +1,41 @@
+<div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Visitantes</a></li>
+      <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">.csv</a></li>
+     </ul>
+    
+     <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="home">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th></th>
+                </tr>
+              </thead>
+    
+              <tbody>
+                <% @visitantes.each do |visitante| %>
+                  <tr>
+                    <td><%= visitante.nome %></td>
+                    <td><%= visitante.email %></td>
+                    <td><%= visitante.created_at.strftime("%d/%m/%Y") %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+      </div>
+      
+      <div role="tabpanel" class="tab-pane" id="profile">
+          <% @visitantes.each do |visitante| %>
+          <%= visitante.email %>; <%= visitante.nome %><br/>
+        <% end %>
+      </div>
+      
+    </div>
+      
+  </div>
+  

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="page-header">
+    <%= link_to 'Visitantes', visitantes_path, class: "btn btn btn-primary"%>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+<p>
+  <strong>Nome:</strong>
+  <%= @visitante.nome %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @visitante.email %>
+</p>
+<table class="table">
+        <thead>
+            <tr>
+              <th>Imóveis</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+              <% @favoritos.each do |favorito| %>
+                <tr>
+                  <td><%= favorito.imovel.tipo.nome %> Cod. <%= favorito.imovel_id %></td>
+                  <td style="width: 5%;"><%= link_to 'Detalhes', imovel_path(favorito.imovel_id), class: "btn btn btn-primary" %></td>
+                </tr>
+              <% end %>
+          
+          </tbody>
+        </table>
+
+        
+      </div>
+    </div>
+</div>

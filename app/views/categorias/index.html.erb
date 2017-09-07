@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="page-header">
+        <%= link_to 'Nova categoria', new_categoria_path, class: "btn btn btn-primary" %>
+      </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categorias.each do |categoria| %>
+      <tr>
+        <td><%= categoria.nome %></td>
+        <td style="width: 5%;"><%= link_to 'Editar', edit_categoria_path(categoria), class: "btn btn btn-primary" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="page-header">
+        <%= link_to 'Nova usuário', new_usuario_path, class: "btn btn btn-primary" %>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>email</th>
+                <th colspan="2"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @usuarios.each do |usuario| %>
+                <tr>
+                <td style="width: 20%"><%= usuario.nome %></td>
+                <td style="width: 70%"><%= usuario.email %></td>
+                <td style="width: 5%"><%= link_to 'Editar', edit_usuario_path(usuario), class: "btn btn btn-default" %></td>
+                <td style="width: 5%"><%= link_to 'Apagar', usuario, method: :delete, data: { confirm: 'Deseja apagar essa usuario?' }, class: "btn btn btn-danger" %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+      

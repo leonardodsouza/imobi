@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="page-header">
+    <% if usuario_signed_in? %>
+      <%= link_to 'Novo Artigo', new_artigo_path , class: "btn btn btn-primary"%>
+    <%else%>
+      <h2>Artigos</h2>
+    <%end%>    
+  </div>  
+    <% @artigos.each do |artigo| %>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-6">
+                            <%= image_tag artigo.foto.url(:thumb)%>
+                        </div>
+                        <div class="col-md-8 .col-xs-6">
+                          <h3><%= link_to artigo.titulo, artigo %></h3>
+                          <span><%= artigo.autor %></span>
+
+                        </div>
+                        <div class="col-md-2">
+                            <% if usuario_signed_in? %>
+                              <%= link_to 'Editar', edit_artigo_path(artigo), class: "btn btn btn-primary" %>
+                              <%= link_to 'Apagar', artigo, method: :delete, data: { confirm: 'Deseja apagar esse registro ?' }, class: "btn btn btn-danger" %>
+                            <%end%>  
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>    
+    </div>
+  <%end%>  
+</div>
+
+

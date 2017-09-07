@@ -1,0 +1,50 @@
+
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="page-header">
+          <h3><%= t('.title', resource: resource_class.model_name.human) %></h3>
+        </div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :nome %>
+    <%= f.text_field :nome, autofocus: true , class: "form-control"%>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <p>
+      <%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %>
+    </p>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i>
+    <%= f.password_field :current_password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit t('.update'), class: "btn btn btn-primary" %>
+    <%= link_to t('devise.shared.links.back'), :back, class: "btn btn btn-default" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

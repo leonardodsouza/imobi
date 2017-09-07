@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="page-header">
+    <%= link_to 'Nova cidade', new_cidade_path, class: "btn btn btn-primary" %>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cidades.each do |cidade| %>
+            <tr>
+              <td style="width: 20%"><%= cidade.nome %></td>
+              <td style="width: 70%"><%= cidade.estado %></td>
+              <td style="width: 5%"><%= link_to 'Editar', edit_cidade_path(cidade), class: "btn btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

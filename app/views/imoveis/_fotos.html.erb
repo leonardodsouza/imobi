@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h4>
+    <%= @imovel.tipo.nome.upcase %> (<%= @imovel.area %> m²) EM <%= @imovel.cidade.nome.upcase %> BAIRRO <%= @imovel.bairro.nome.upcase %>
+    </h4>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-12">
+      <div class="gallery">
+        <ul id="lightgallery" class="list-unstyled row">
+            <%= image_tag  "vendido.png", class: "img-responsive vendido" if @imovel.situacao_id == 3 %>
+          <li data-responsive="<%= @imovel.capa.url %>" data-src="<%= @imovel.capa.url %>" data-sub-html="Foto do imóvel">
+            <a href="">
+              <%= image_tag @imovel.capa.url(:medium), class: "img-responsive"%>
+            </a>
+          </li>  
+          <% for foto in @imovel.fotos do %>
+            <li class="thumb-gallery" data-responsive="<%= foto.img.url %>" data-src="<%= foto.img.url %>" data-sub-html="<%= foto.legenda %>">
+              <a href="">
+                  <%= image_tag foto.img.url(:thumb) %>
+              </a>
+            </li>
+          <%end%>    
+        </ul>
+      </div>
+      </div>                   
+      <div>
+          <strong>Descrição</strong></br>
+          <%= @imovel.descricao %>
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+   $('#lightgallery').lightGallery();
+  });
+</script>

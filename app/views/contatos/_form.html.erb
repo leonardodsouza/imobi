@@ -1,0 +1,42 @@
+<div class="modal-body">
+    <%= form_with(model: contato, remote: true) do |form| %>
+      <% if contato.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(contato.errors.count, "error") %> prohibited this contato from being saved:</h2>
+
+          <ul>
+          <% contato.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= form.label :nome %>
+        <%= form.text_field :nome, id: :contato_nome, value: cookies[:nome], required: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :email %>
+        <%= form.text_field :email, id: :contato_email, value: cookies[:email], required: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :telefone %>
+        <%= form.text_field :telefone, id: :contato_telefone, required: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :mensagem %>
+        <%= form.text_area :mensagem, id: :contato_mensagem, required: true, class: "form-control" %>
+        <span class="help-block">Todos os campos são obrigatórios</span>
+      </div>
+
+      <div class="form-group">
+          <%= form.submit 'Enviar', class: "btn btn btn-primary" %>
+      </div>
+
+    <% end %>
+
+</div>

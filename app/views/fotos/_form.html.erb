@@ -1,0 +1,20 @@
+<%= form_with(model: foto, remote: true ) do |form| %>
+  <%= form.hidden_field :imovel_id, id: :foto_imovel_id, value: @imovel.id %>
+  
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form.label :img %>
+        <%= form.file_field :img, id: :foto_img, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :legenda %>
+        <%= form.text_field :legenda, id: :foto_legenda, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.submit class: "btn btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

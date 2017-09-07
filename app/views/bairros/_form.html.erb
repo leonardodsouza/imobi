@@ -1,0 +1,27 @@
+<%= form_with(model: bairro, local: true) do |form| %>
+  <% if bairro.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bairro.errors.count, "error") %> prohibited this bairro from being saved:</h2>
+
+      <ul>
+      <% bairro.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cidade_id %>
+    <%= form.text_field :cidade_id, id: :bairro_cidade_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome, id: :bairro_nome %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

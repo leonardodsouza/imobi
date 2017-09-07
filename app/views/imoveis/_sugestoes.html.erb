@@ -1,0 +1,28 @@
+<div class="panel panel-default hidden-xs">
+    <div class="panel-body">
+        <div class="page-header">
+            <h3>Outras sugestões</h3>
+        </div>
+        <div class="row">
+            <% @imoveis.each do |imovel| %>
+                <div class="col-sm-4 col-md-3">
+                    <div class="thumbnail">
+                        <%= image_tag  "faixa_vendido.png", class: "img-responsive vendido" if imovel.situacao_id == 3 %>
+                        <%= image_tag imovel.capa.url(:lista), class: "img-responsive"%>
+                        <div class="caption">
+                            <h4><%= imovel.tipo.nome %></h4>
+                            <p>
+                                <span><%= imovel.area %>m²</span><br/>
+                                <span><%= imovel.cidade.nome %></span><br/>
+                                <span><%= imovel.bairro.nome %></span>
+                            </p>
+                            <p>
+                                <%= link_to 'Visualizar', imovel , class: "btn btn btn-primary" %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            <%end%>
+        </div>
+    </div>
+</div>

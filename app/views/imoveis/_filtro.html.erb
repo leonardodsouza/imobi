@@ -1,0 +1,96 @@
+<script type="text/javascript">
+  
+  $(function() {
+    $('select[name="cidade"]').on('change', function() {
+      id = this.value
+      buscaBairros("id="+id);
+    })
+  });
+  
+  function buscaBairros(id) {
+    $.getJSON("/cities_by_state", id, function(j) {
+      var options = '<option value="">Selecione o bairro</option>';
+      $.each(j.cty, function(i, item) {
+        options += '<option value="' + item.id + '">' + item.n + '</option>';
+      });
+      $('select[name="bairro"]').html(options);
+    });
+  };
+
+  $(function () {
+    var $inputs = $("input, textarea, select", "#filtro"),
+        $button = $("#filtrar");
+
+    var limpos = 0;
+
+    // verificação inicial
+    $inputs.each(function () {
+        var $this = $(this);
+        var val = $this.val();
+        val || limpos++;
+        $this.data("val-antigo", val);
+    });
+
+    $button.prop("disabled", !!limpos);
+
+    $inputs.on("change keyup mouseup", function () {
+        var $this = $(this);
+        var val = $this.val();
+        limpos += (val ? 0 : 1) - ($this.data("val-antigo") ? 0 : 1);
+        $this.data("val-antigo", val);
+        $button.prop("disabled", !!limpos);
+    });
+  });
+
+</script>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-search"></span> Procurar
+    </div>
+    <div class="panel-body">
+        <%= form_tag imoveis_path, id: "filtro" , method: :get do %>
+        
+        <div class="form-group">
+            <%= select_tag :categoria, options_from_collection_for_select(Categoria.all.order(:nome), "id", "nome", @categoria), prompt: "Selecione a categoria", class: "form-control" %>
+        </div>
+
+        <div class="form-group">    
+            <%= select_tag :tipo, options_from_collection_for_select(Tipo.all.order(:nome), "id", "nome", @tipo), prompt: "Selecione o tipo", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= select_tag :cidade, options_from_collection_for_select(Cidade.all.order(:nome), "id", "nome", @cidade), prompt: "Selecione a cidade", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= select_tag :bairro, options_from_collection_for_select(Bairro.all.order(:nome), "id", "nome", @bairro), prompt: "Selecione o bairro", class: "form-control"%>
+        </div>    
+
+        <div class="form-group">
+            <%= select_tag :dormitorios, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @dormitorios), prompt: "Nº de dormitórios" , class: "form-control" %>
+        </div> 
+
+        <div class="form-group">
+            <%= select_tag :banheiros, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @banheiros), prompt: "Nº de banheiros" , class: "form-control" %>
+        </div>                     
+        
+        <div class="form-group">
+            <%= select_tag :garagem, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @garagem), prompt: "Nº de garagens" , class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= text_field_tag :preco_minimo, @preco_minimo, placeholder: "R$ valor mínimo", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= text_field_tag :preco_maximo, @preco_maximo, placeholder: "R$ valor máximo",  class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= submit_tag 'Filtrar', class: "btn btn btn-primary" %>
+            <%= link_to 'Limpar', imoveis_path, class: "btn btn btn-default" %>
+        </div>
+        <%end%>
+
+    </div>
+</div>

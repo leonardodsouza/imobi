@@ -1,0 +1,35 @@
+<div class="container">  
+  <div class="row">
+    <div class="col-md-3 hidden-xs">
+      <%= render 'imoveis/filtro' %>
+
+      <%= render 'correspondente' %>
+      <hr/>
+      <%= render 'anunciar' %>
+    </div>
+    <div class="col-md-9">
+      <%= render 'novidades' %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bem-vindo" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body background-modal">
+          <h1>
+            Bem vindo <br/>Informe seu nome e email
+          </h1>  
+          <%= render 'visitantes/form', visitante: @visitante %>
+        </div>
+      </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<% if cookies[:email].blank? %>
+  <script>
+    $(document).ready(function(){
+        $('.bem-vindo').modal();
+    });
+  </script>
+<%end%>  

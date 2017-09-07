@@ -1,0 +1,135 @@
+<div class="container">
+
+
+  <div class="row">
+      <div class="col-md-12">
+    <div class="col-md-7">
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>
+          <%= @imovel.tipo.nome.upcase %> (<%= @imovel.area %> m²) EM <%= @imovel.cidade.nome.upcase %> BAIRRO <%= @imovel.bairro.nome.upcase %>
+          </h4>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-md-12">
+            <div class="gallery">
+              <ul id="lightgallery" class="list-unstyled row">
+                <li data-responsive="<%= @imovel.capa.url %>" data-src="<%= @imovel.capa.url %>" data-sub-html="Foto do imóvel">
+                  <a href="">
+                    <%= image_tag @imovel.capa.url(:medium), class: "img-responsive"%>
+                  </a>
+                </li>  
+                <% for foto in @imovel.fotos do %>
+                  <li class="thumb-gallery" data-responsive="<%= foto.img.url %>" data-src="<%= foto.img.url %>" data-sub-html="<%= foto.legenda %>">
+                    <a href="">
+                        <%= image_tag foto.img.url(:thumb) %>
+                    </a>
+                  </li>
+                <%end%>    
+              </ul>
+            </div>
+            </div>
+            <script type="text/javascript">
+              $(document).ready(function(){
+                  $('#lightgallery').lightGallery();
+              });
+            </script>        
+        </div>  
+      </div>    
+    </div>  
+   
+      <div class="col-md-5">
+      <ul class="list-group">
+          
+        <li class="list-group-item">
+            <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+            <strong>Código:</strong>
+            <%= @imovel.id %>
+          </li>
+          
+        <li class="list-group-item">
+          <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+          <strong>Situacao:</strong>
+          <%= @imovel.situacao.nome %>
+        </li>
+
+        <li class="list-group-item">
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          <strong>Cidade:</strong>
+          <%= @imovel.cidade.nome %>
+        </li>
+
+        <li class="list-group-item">
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          <strong>Bairro:</strong>
+          <%= @imovel.bairro.nome %>
+        </li>
+
+        <li class="list-group-item">
+          <%= @imovel.descricao %>
+        </li>
+
+        <% if @imovel.dormitorios.present? %>
+          <li class="list-group-item">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            <strong>Dormitorios:</strong>
+            <%= @imovel.dormitorios %>
+          </li>
+        <%end%>
+        
+        <% if @imovel.banheiros.present? %>
+          <li class="list-group-item">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            <strong>Banheiros:</strong>
+            <%= @imovel.banheiros %>
+          </li>
+        <%end%>
+
+        <% if @imovel.garagem.present? %>
+          <li class="list-group-item">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            <strong>Garagem:</strong>
+            <%= @imovel.garagem %>
+          </li>
+        <%end%>
+
+        <li class="list-group-item">
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          <strong>Area:</strong>
+          <%= @imovel.area %> m²
+        </li>
+
+        <li class="list-group-item">
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          <strong>Valor:</strong>
+          <%= @imovel.valor %>
+        </li>
+      </ul>
+           <div class="panel panel-default">
+          <div class="panel-body">
+      <form>
+        <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        </div>
+        <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+          </div>
+    </div>
+      </div>
+    
+   
+  </div>
+</div>
+</div>
+
+
+
+    

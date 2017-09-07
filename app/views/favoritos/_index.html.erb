@@ -1,0 +1,20 @@
+<div class="modal-body">
+  <table class="table">
+  <thead>
+      <tr>
+        <th>Imóveis</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @favoritos.present? %>
+        <% @favoritos.each do |favorito| %>
+          <tr>
+            <td><%= favorito.imovel.tipo.nome %> Cod. <%= favorito.imovel_id %></td>
+            <td style="width: 5%;"><%= link_to 'Detalhes', imovel_path(favorito.imovel_id), class: "btn btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

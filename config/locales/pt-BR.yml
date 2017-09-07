@@ -1,0 +1,29 @@
+pt-BR:
+ activerecord:
+  models:
+    usuario: Usuário
+    imovel: Imóvel
+    foto: Fotos
+  attributes:
+    usuario:
+      nome: Nome
+      email: Email
+      password: Senha (password)
+    imovel:
+      usuario_id: Usuário
+      categoria_id: Categoria
+      tipo_id: Tipo
+      situacao_id: Situação
+      cidade_id: Cidade
+      bairro_id: Bairro
+      descricao: Descrição
+      dormitorios: Dormitórios
+      banheiros: Banheiros
+      garagem: Garagens (número de vagas)
+      area: Área (m²)
+      valor: Valor
+      visualizacoes: Visualizações
+      capa: Foto da capa do anúncio
+    foto:
+      img: Escolha a foto
+      legenda: Legenda da foto

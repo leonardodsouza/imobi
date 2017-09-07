@@ -1,0 +1,24 @@
+<div class="menu">
+        <%= render 'imoveis/menu'%>  
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <%= image_tag  "logo.png", class: "img-responsive logo" %>
+                </div>
+                <div class="col-md-9">
+                    telefone e facebook
+                </div>
+            </div>
+            
+        </div>  
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <%= render 'imoveis/filtro' %>
+            </div>
+            <div class="col-md-9">
+                    <%= render 'form', contato: @contato %>
+            </div>
+        </div>
+    </div>

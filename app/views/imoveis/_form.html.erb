@@ -1,0 +1,114 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('select[name="imovel[cidade_id]"]').on('change', function() {
+      id = this.value
+      buscaBairros("id="+id);
+    })
+  });
+
+  function buscaBairros(id) {
+    $.getJSON("/cities_by_state", id, function(j) {
+      var options = '<option value="">Selecione o bairro</option>';
+      $.each(j.cty, function(i, item) {
+        options += '<option value="' + item.id + '">' + item.n + '</option>';
+      });
+      $('select[name="imovel[bairro_id]"]').removeAttr("disabled");
+      $('select[name="imovel[bairro_id]"]').html(options);
+    });
+  }
+</script>
+<%= form_with(model: imovel, local: true) do |form| %>
+ 
+  <% if imovel.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only"></span>   
+      <% if imovel.errors.count > 1 %> 
+        Corrija os erros
+      <% else %>
+        Corrija o erro
+      <% end %>
+    </div>  
+    <ul>
+    <% imovel.errors.full_messages.each do |message| %>
+      <li class="text-danger"><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form.label :categoria_id %>
+        <%= form.collection_select(:categoria_id, Categoria.all.order(:nome), :id, :nome, {prompt: "Selecine a categoria"}, {class: "form-control"}) %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :tipo_id %>
+        <%= form.collection_select(:tipo_id, Tipo.all.order(:nome), :id, :nome, {prompt: "Selecione o tipo de imóvel"}, {class: "form-control"}) %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :situacao_id %>
+        <%= form.collection_select(:situacao_id, Situacao.all.order(:nome), :id, :nome, {prompt: "Selecione a situação"}, {class: "form-control"}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form.label :cidade_id %>
+        <%= form.collection_select(:cidade_id, Cidade.all.order(:nome), :id, :nome, {prompt: "Selecione a cidade"}, {class: "form-control"}) %>
+      </div>
+      <div class="col-md-8">
+        <%= form.label :bairro_id %>
+        <%= form.collection_select(:bairro_id, Bairro.all.order(:nome), :id, :nome,{prompt: ""}, {class: "form-control", :disabled => "disabled"}) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao, id: :imovel_descricao, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form.label :dormitorios %>
+        <%= form.select :dormitorios ,[1,2,3,4,5,6,7,8,9,10], {prompt: "Nº de dormitorios"},{ class: "form-control" } %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :banheiros %>
+        <%= form.select :banheiros ,[1,2,3,4,5,6,7,8,9,10], {prompt: "Nº de banheiros"},{class: "form-control" } %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :garagem %>
+        <%= form.select :garagem ,[1,2,3,4,5,6,7,8,9,10], {prompt: "Nº de vagas na garagem"},{ class: "form-control" } %>    
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <%= form.label :area %>
+        <%= form.number_field :area, id: :imovel_area, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :valor %>
+        <%= form.number_field :valor, id: :imovel_valor, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= form.label :capa %>
+        <%= form.file_field :capa, id: :imovel_capa, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= form.submit class: "btn btn btn-primary" %>
+    <%= link_to 'Cancelar', imoveis_path, class: "btn btn btn-default" %>
+  </div>
+<% end %>

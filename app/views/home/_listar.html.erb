@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+    <div class="panel-body">   
+        <%= tipo(@tipo).upcase if @tipo.present? %>
+        <%= categoria(@categoria).upcase if @categoria.present? %>
+        <%= cidade(@cidade).upcase if @cidade.present? %>
+    </div>
+</div>
+<% @imoveis.each do |imovel| %>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <%= image_tag imovel.capa.url(:lista), class: "img-responsive"%>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="imovel">
+                            <div class="col-md-6 nome">
+                                <h4>
+                                    <%= imovel.tipo.nome %> <%= imovel.area %> m²
+                                </h4>    
+                            </div>
+                            <div class="col-md-6 valor">
+                                <h4>
+                                    <%= number_to_currency_br(imovel.valor) %>
+                                </h4>    
+                            </div>
+                            <div class="col-md-6 descricao">
+                                <strong>Cod. <%= imovel.id  %></strong></br>
+                                <span><%= imovel.cidade.nome %> bairro <%= imovel.bairro.nome.downcase %></span></br>
+                                <span><%= imovel.situacao.nome %></span></br>
+                                <span><%= imovel.visualizacoes %></span>
+                            </div>
+                            <div class="col-md-6 visualizar">
+                                <%= link_to 'Detalhes', imovel , class: "btn btn btn-primary btn-lg" %>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>    
+</div>
+<%end%>

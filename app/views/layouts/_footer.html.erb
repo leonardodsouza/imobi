@@ -1,0 +1,36 @@
+<footer>
+    <div class="container">
+        <div class="row">
+        <div class="col-md-4 col-sm-6 footerleft ">
+            <div class="logofooter">Imobiliária Buenos Aires</div>
+            <p><i class="glyphicon glyphicon-map-marker"></i>Rua Santos Dumont, 688 - Santa Rosa -RS</p>
+            <p><i class="glyphicon glyphicon-phone-alt"></i>55 3512 1944</p>
+            <p><i class="glyphicon glyphicon-envelope"></i> contato@imobiliariabuenosaires.com.br</p>
+            
+        </div>
+        <div class="col-md-2 col-sm-6 paddingtop-bottom">
+            <h6 class="heading7">Categorias</h6>
+            <ul class="footer-ul">
+            <% Categoria.all.each do |categoria| %>
+                <li><%= link_to categoria.nome, imoveis_categoria_path(categoria) %></li>
+            <%end%>
+            </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 paddingtop-bottom">
+            <h6 class="heading7">Artigos</h6>
+            <ul class="footer-ul">
+            <% Artigo.all.limit(5).order(created_at: :desc).each do |artigo| %>
+                <li><%= link_to artigo.titulo, artigo_path(artigo) %></li>
+            <%end%>
+            </ul>
+        </div>
+        <div class="col-md-3 col-sm-6 paddingtop-bottom">
+            <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="300" data-small-header="false" style="margin-bottom:15px;" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <div class="fb-xfbml-parse-ignore">
+                <blockquote cite="https://www.facebook.com/facebook"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</footer> 

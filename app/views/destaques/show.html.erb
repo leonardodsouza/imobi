@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="page-header">
+      <%= link_to 'Novo destaque', new_destaque_path, class: "btn btn btn-primary" %>
+      <%= link_to 'Editar', edit_destaque_path(@destaque), class: "btn btn btn-default" %>
+      <%= link_to 'Voltar', destaques_path, class: "btn btn btn-default" %>
+    </div>
+  <div class="panel panel-default">
+      <div class="panel-body">
+        <%= image_tag @destaque.foto.url(:medium), class: "img-responsive"%>
+        <p>
+          <strong>Título:</strong>
+          <%= @destaque.titulo %>
+        </p>
+
+        <p>
+          <strong>Legenda:</strong>
+          <%= @destaque.legenda %>
+        </p>
+
+        <p>
+          <strong>Url:</strong>
+          <%= @destaque.url %>
+        </p>
+      </div>
+    </div>
+</div>

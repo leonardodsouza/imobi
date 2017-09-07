@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table">
+        <thead>
+          <tr>
+            <th>Imovel</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @mensagens.each do |mensagem| %>
+            <tr>
+              <td><%= link_to mensagem.imovel.tipo.nome, imovel_path(mensagem.imovel) %></td>
+              <td><%= mensagem.nome %></td>
+              <td><%= mensagem.email %></td>
+              <td><%= mensagem.telefone %></td>
+              <td><%= mensagem.created_at %></td>
+              <td><%= link_to 'Edit', edit_mensagem_path(mensagem) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="panel panel-default">
+    <div class="panel-body">  
+        <%= @todos %>
+        <% if @tipo.present? %>
+            / <%= tipo(@tipo).upcase %>
+        <%end%>
+        <% if @categoria.present? %>
+            / <%= categoria(@categoria).upcase %>
+        <%end%>
+        <% if @cidade.present? %>
+            / <%= cidade(@cidade).upcase %>
+        <%end%>    
+    </div>
+</div>
+<% @imoveis.each do |imovel| %>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <%= image_tag  "faixa_vendido.png", class: "img-responsive vendido" if imovel.situacao_id == 3 %>
+                        <%= image_tag imovel.capa.url(:lista), class: "img-responsive"%>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="imovel">
+                            <div class="col-md-6 nome">
+                                <h4>
+                                    <%= imovel.tipo.nome %> <%= imovel.area %> m²
+                                </h4>    
+                            </div>
+                            <div class="col-md-6 valor">
+                                <h4>
+                                    <%= number_to_currency_br(imovel.valor) %>
+                                </h4>    
+                            </div>
+                            <div class="col-md-6 descricao">
+                                <strong>Cod. <%= imovel.id  %></strong></br>
+                                <span><%= imovel.cidade.nome %> bairro <%= imovel.bairro.nome.downcase %></span></br>
+                                <span><%= situacao(imovel.situacao_id, imovel.situacao.nome) %></span></br>
+                                <% if usuario_signed_in? %>
+                                    <span>Número de visualizações: <%= imovel.visualizacoes %></span>
+                                <%end%>
+                            </div>
+                            <div class="col-md-6 visualizar">
+                                <% if usuario_signed_in? %>
+                                    <%= link_to 'Detalhes', imovel , class: "btn btn btn-default" %>
+                                    <%= link_to 'Editar', edit_imovel_path(imovel), class: "btn btn btn-primary" %>
+                                    <%= link_to 'Deletar', imovel, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn btn-danger" %>
+                                <%else%>
+                                    <%= link_to  imovel , class: "btn btn btn-primary" do %>
+                                        <span class="glyphicon glyphicon-ok"></span> Detalhes
+                                    <%end%>
+                                    <%= link_to  edit_favorito_path(imovel) , remote: true, class: "btn btn-default" do %>
+                                        <span class="glyphicon glyphicon-envelope"></span> Enviar e-mail
+                                    <%end%>
+                                <%end%>    
+                            </div>
+                        </div>                      
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>    
+</div>
+<%end%>
+<%= will_paginate @imoveis, renderer: BootstrapPagination::Rails%>  

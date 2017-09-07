@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="page-header">
+            <h3>Últimos imóveis cadastrados</h3>
+        </div>
+        <p>Confira as novidades</p>
+    </div>
+</div>
+<div class="row">
+    <% @imoveis.each do |imovel| %>
+        <div class="col-sm-5 col-md-4">
+            <%= image_tag  "faixa_vendido.png", class: "vendido" if imovel.situacao_id == 3 %>
+            <%= image_tag imovel.capa.url(:lista), style: "width: 100%;margin-bottom: 10px;", class: "img-rounded"%>
+            <div class="thumbnail">
+
+                <div class="caption">
+                    <h3><%= imovel.tipo.nome %> <%= imovel.area %>m²</h3>
+                    <p><span><%= imovel.cidade.nome %>, <%= imovel.bairro.nome %></span></p>
+                    <p>
+                        <%= link_to 'Visualizar', imovel , class: "btn btn btn-primary" %>
+                        <%= link_to  edit_favorito_path(imovel) , remote: true, class: "btn btn-default" do %>
+                            <span class="glyphicon glyphicon-envelope"></span> Enviar e-mail
+                        <%end%>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <%end%>
+</div>
