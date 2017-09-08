@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   resources :tipos
   resources :categorias
   devise_for :usuarios
-  #resources :usuarios
 
   get 'cities_by_state' => 'bairros#cities_by_state', :as => 'cities_by_state'
   get 'imoveis/categoria/:id' => 'imoveis#categoria', :as => 'imoveis_categoria'
