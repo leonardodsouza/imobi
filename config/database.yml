@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+ 
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: imobi_development
+
+
+test:
+  <<: *default
+  database: imobi_test
+
+
+production:
+  <<: *default
+  database: imobi_production
