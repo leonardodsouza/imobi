@@ -10,6 +10,7 @@ class MensagensController < ApplicationController
   # GET /mensagens/1
   # GET /mensagens/1.json
   def show
+    @mensagem.update_columns(visualizado: 'sim')
   end
 
   # GET /mensagens/new
@@ -25,6 +26,7 @@ class MensagensController < ApplicationController
   # POST /mensagens.json
   def create
     @mensagem = Mensagem.new(mensagem_params)
+    @mensagem.save
     flash[:notice] = 'Recebemos sua mensagem.'
     @link = imovel_url(@mensagem.imovel_id)
     EmailsMailer.informacoes(@mensagem, @link).deliver_now
@@ -62,6 +64,6 @@ class MensagensController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mensagem_params
-      params.require(:mensagem).permit(:imovel_id, :nome, :email, :telefone, :mensagem)
+      params.require(:mensagem).permit(:imovel_id, :visualizado, :nome, :email, :telefone, :mensagem)
     end
 end

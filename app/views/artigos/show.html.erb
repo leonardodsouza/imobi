@@ -4,8 +4,9 @@
           <div class="page-header">
               <h3><%= @artigo.titulo %></h3>
           </div>
-          <%= image_tag @artigo.foto.url(:medium) %>
-          <p><%= @artigo.texto %></p>
+          <%= image_tag @artigo.foto.url(:medium), class: "img-responsive" %>
+          <hr>
+          <p><%= raw(@artigo.texto) %></p>
           <p><strong>Autor:</strong><%= @artigo.autor %></p>
       </div>
   </div>

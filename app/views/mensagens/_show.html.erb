@@ -1,1 +1,33 @@
-<h4 id="notice"><%= notice %></h4>
+<div class="modal-body">
+<div class="container">
+    
+    <p>
+        <strong>Sobre o imóvel:</strong>
+        <%= link_to @mensagem.imovel.tipo.nome, imovel_path(@mensagem.imovel) %></br>
+        <%= @mensagem.imovel.tipo.nome.upcase %> (<%= @mensagem.imovel.area %> m²) EM <%= @mensagem.imovel.cidade.nome.upcase %> BAIRRO <%= @mensagem.imovel.bairro.nome.upcase %>
+        <%= number_to_currency_br(@mensagem.imovel.valor) %>
+        <%= image_tag @mensagem.imovel.capa.url(:thumb), class: "img-responsive"%>
+    </p>
+    <p>
+        <strong>Nome:</strong>
+        <%= @mensagem.nome %>
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        <%= @mensagem.email %>
+    </p>
+
+    <p>
+        <strong>Telefone:</strong>
+        <%= @mensagem.telefone %>
+    </p>
+
+    <p style="overflow: hidden; width: 600px;">
+        <%= @mensagem.mensagem %>
+    </p>
+
+    <p><%= mail_to @mensagem.email, "Responder" %></p>
+    
+</div>
+</div>

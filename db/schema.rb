@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170823104808) do
+ActiveRecord::Schema.define(version: 20170908130813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170823104808) do
     t.text "mensagem"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "visualizado"
   end
 
   create_table "destaques", force: :cascade do |t|
@@ -144,6 +145,7 @@ ActiveRecord::Schema.define(version: 20170823104808) do
     t.text "mensagem"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "visualizado"
     t.index ["imovel_id"], name: "index_mensagens_on_imovel_id"
   end
 

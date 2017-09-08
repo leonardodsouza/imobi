@@ -1,0 +1,26 @@
+<div class="modal-body">
+<div class="container">
+ 
+    <p>
+      <strong>Nome:</strong>
+      <%= @contato.nome %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @contato.email %>
+    </p>
+
+    <p>
+      <strong>Telefone:</strong>
+      <%= @contato.telefone %>
+    </p>
+
+    <p style="overflow: hidden; width: 600px;">
+      <%= @contato.mensagem %>
+    </p>
+
+    <p><%= mail_to @contato.email, "Responder" %></p>
+  
+</div>
+</div>

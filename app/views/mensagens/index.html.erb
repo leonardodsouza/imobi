@@ -4,6 +4,7 @@
         <table class="table">
         <thead>
           <tr>
+            <th>Visualizado</th>
             <th>Imovel</th>
             <th>Nome</th>
             <th>Email</th>
@@ -15,12 +16,13 @@
         <tbody>
           <% @mensagens.each do |mensagem| %>
             <tr>
+              <td><%= mensagem.visualizado %></td>
               <td><%= link_to mensagem.imovel.tipo.nome, imovel_path(mensagem.imovel) %></td>
               <td><%= mensagem.nome %></td>
               <td><%= mensagem.email %></td>
               <td><%= mensagem.telefone %></td>
-              <td><%= mensagem.created_at %></td>
-              <td><%= link_to 'Edit', edit_mensagem_path(mensagem) %></td>
+              <td><%= mensagem.created_at.strftime("%d/%m/%Y")%></td>
+              <td><%= link_to 'Visualizar', mensagem, class: "btn btn btn-default", remote: true %></td>
             </tr>
           <% end %>
         </tbody>

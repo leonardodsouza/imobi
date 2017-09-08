@@ -10,6 +10,7 @@ class ContatosController < ApplicationController
   # GET /contatos/1
   # GET /contatos/1.json
   def show
+    @contato.update_columns(visualizado: 'sim')
   end
 
   # GET /contatos/new
@@ -25,6 +26,7 @@ class ContatosController < ApplicationController
   # POST /contatos.json
   def create
     @contato = Contato.new(contato_params)
+    @contato.save
     EmailsMailer.contato(@contato).deliver_now
   end
 
@@ -60,6 +62,6 @@ class ContatosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contato_params
-      params.require(:contato).permit(:nome, :email, :telefone, :mensagem)
+      params.require(:contato).permit(:nome, :visualizado, :email, :telefone, :mensagem)
     end
 end
