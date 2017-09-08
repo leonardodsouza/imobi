@@ -1,8 +1,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: postgres141302-imobiliariabuenosaires.jelasticlw.com.br
+  username: webadmin
+  password: YTHdsf13881
  
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
 
 development:
   <<: *default
