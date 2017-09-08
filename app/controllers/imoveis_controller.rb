@@ -33,7 +33,7 @@ class ImoveisController < ApplicationController
 
   # GET /imoveis/new
   def new
-    @imovel = current_usuario.imoveis.new
+    @imovel = Imovel.imoveis.new
   end
 
   # GET /imoveis/1/edit
@@ -45,7 +45,7 @@ class ImoveisController < ApplicationController
   # POST /imoveis
   # POST /imoveis.json
   def create
-    @imovel = current_usuario.imoveis.new(imovel_params)
+    @imovel = Imovel.imoveis.new(imovel_params)
 
     respond_to do |format|
       if @imovel.save

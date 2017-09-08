@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908130813) do
+ActiveRecord::Schema.define(version: 20170908213551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 20170908130813) do
   end
 
   create_table "imoveis", force: :cascade do |t|
-    t.bigint "usuario_id"
     t.bigint "categoria_id"
     t.bigint "tipo_id"
     t.bigint "situacao_id"
@@ -134,7 +133,6 @@ ActiveRecord::Schema.define(version: 20170908130813) do
     t.index ["cidade_id"], name: "index_imoveis_on_cidade_id"
     t.index ["situacao_id"], name: "index_imoveis_on_situacao_id"
     t.index ["tipo_id"], name: "index_imoveis_on_tipo_id"
-    t.index ["usuario_id"], name: "index_imoveis_on_usuario_id"
   end
 
   create_table "mensagens", force: :cascade do |t|
@@ -195,6 +193,5 @@ ActiveRecord::Schema.define(version: 20170908130813) do
   add_foreign_key "imoveis", "cidades"
   add_foreign_key "imoveis", "situacoes"
   add_foreign_key "imoveis", "tipos"
-  add_foreign_key "imoveis", "usuarios"
   add_foreign_key "mensagens", "imoveis"
 end

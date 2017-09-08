@@ -1,12 +1,11 @@
 class Imovel < ApplicationRecord
-  belongs_to :usuario
   belongs_to :categoria
   belongs_to :tipo
   belongs_to :situacao
   belongs_to :cidade
   belongs_to :bairro
-  has_many :fotos
-  has_many :mensagens
+  has_many :fotos, :dependent => :destroy
+  has_many :mensagens, :dependent => :destroy
   validates_presence_of :usuario_id, :categoria_id, :tipo_id, :situacao_id, :cidade_id, :bairro_id, :descricao, :capa, :area, :valor
   has_attached_file :capa, styles: { medium: "600x600>", lista: "240X200#", thumb: "145x145#" }
   validates_attachment_content_type :capa, content_type: /\Aimage\/.*\z/
