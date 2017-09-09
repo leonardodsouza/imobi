@@ -1,24 +1,24 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <h4>
-    <%= @imovel.tipo.nome.upcase %> (<%= @imovel.area %> m²) EM <%= @imovel.cidade.nome.upcase %> BAIRRO <%= @imovel.bairro.nome.upcase %>
-    </h4>
+      
+  <%= link_to  edit_favorito_path(@imovel) , remote: true, class: "btn btn-default hidden-xs" do %>
+    <span class="glyphicon glyphicon-envelope"></span> Enviar
+  <%end%>
+  
+  <div class="social-likes social-likes_vertical btn btn-default hidden-xs" data-counters="no" data-url=<%= full_url_for %> data-title="Casa">
+    <div class="facebook" title="Share link on Facebook"><span class="glyphicon glyphicon-share"></span> Compartilhar</div>
   </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-body">
-    <div class="col-md-12">
-      <%= link_to  edit_favorito_path(@imovel) , remote: true, class: "btn btn-default fb-float hidden-xs" do %>
-        <span class="glyphicon glyphicon-envelope"></span> Enviar e-mail
-      <%end%>
-      <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwww.imobiliariabuenosaires.com.br%2F&layout=button&size=large&mobile_iframe=true&width=117&height=28&appId" width="117" height="28" style="border:none;overflow:hidden; margin-left:650px; margin-top:40px;position: absolute" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-      <%= social_share_button_tag(@imovel.tipo.nome) %>
+      
+    <div class="page-header">
+        <h3><%= @imovel.tipo.nome.upcase %> (<%= @imovel.area %> m²) EM <%= @imovel.cidade.nome.upcase %> BAIRRO <%= @imovel.bairro.nome.upcase %></h3>
+    </div>
+    <div class="col-md-12">  
       <div class="gallery">
         <ul id="lightgallery" class="list-unstyled row">
             <%= image_tag  "vendido.png", class: "img-responsive vendido" if @imovel.situacao_id == 3 %>
           <li data-responsive="<%= @imovel.capa.url %>" data-src="<%= @imovel.capa.url %>" data-sub-html="Foto do imóvel">
             <a href="">
-              <%= image_tag @imovel.capa.url(:medium), class: "img-responsive"%>
+              <%= image_tag @imovel.capa.url(:medium), class: "img-responsive img-capa"%>
             </a>
           </li>
           <% for foto in @imovel.fotos do %>
@@ -30,11 +30,11 @@
           <%end%>    
         </ul>
       </div>
-      </div>                   
       <div>
           <strong>Descrição</strong></br>
           <%= @imovel.descricao %>
       </div>
+      </div>                   
   </div>
 </div>
 

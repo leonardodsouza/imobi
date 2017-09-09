@@ -2,10 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .thumb-gallery{
-    width: 145px;
-    height:  145px;
+    width: 150px;
+    height:  150px;
     float: left;
-    margin-right: 7px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+.img-capa{
+    float: left;
+    margin-left: 5px;
+    margin-top: 5px;
+ 
 }
