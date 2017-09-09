@@ -1,20 +1,24 @@
-<div class="panel panel-default">
-    <div class="panel-body">  
-        <%= @todos %>
-        <% if @tipo.present? %>
-            / <%= tipo(@tipo).upcase %>
-        <%end%>
-        <% if @categoria.present? %>
-            / <%= categoria(@categoria).upcase %>
-        <%end%>
-        <% if @cidade.present? %>
-            / <%= cidade(@cidade).upcase %>
-        <%end%>    
-    </div>
-</div>
+<ol class="breadcrumb">
+    <li><%= @todos %></li>
+   
+    <% if @tipo.present? %>
+        <li><%= tipo(@tipo).upcase %></li>
+    <%end%>
+
+    <% if @categoria.present? %>
+        <li><%= categoria(@categoria).upcase %></li>
+    <%end%>
+
+    <% if @cidade.present? %>
+        <li><%= cidade(@cidade).upcase %></li>
+    <%end%> 
+
+</ol>
+
+
 <% @imoveis.each do |imovel| %>
 <div class="row">
-    <div class="col-sm-12 col-md-12">
+    <div class="col-sm-12 col-md-12 hidden-xs">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="row">
@@ -61,7 +65,25 @@
                 </div>                
             </div>
         </div>
-    </div>    
+    </div>  
+    <div class="col-sm-5 col-md-4 hidden-lg">
+            <%= image_tag  "faixa_vendido.png", class: "vendido" if imovel.situacao_id == 3 %>
+            <%= image_tag imovel.capa.url(:lista), style: "width: 100%;margin-bottom: 10px;", class: "img-rounded"%>
+            <div class="thumbnail">
+
+                <div class="caption">
+                    <h3><%= imovel.tipo.nome %> <%= imovel.area %>m²</h3>
+                    <p><span><%= imovel.cidade.nome %>, <%= imovel.bairro.nome %></span></p>
+                    <p>
+                        <%= link_to 'Visualizar', imovel , class: "btn btn btn-primary" %>
+                        <%= link_to  edit_favorito_path(imovel) , remote: true, class: "btn btn-default" do %>
+                            <span class="glyphicon glyphicon-envelope"></span> Enviar e-mail
+                        <%end%>
+                    </p>
+                </div>
+            </div>
+        </div>
+
 </div>
 <%end%>
 <%= will_paginate @imoveis, renderer: BootstrapPagination::Rails%>  

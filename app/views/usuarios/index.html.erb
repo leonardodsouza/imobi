@@ -1,0 +1,30 @@
+<div class="container">
+    <% if notice.present? %>
+        <div class="alert alert-info" role="alert">
+        <h4><%= notice %></h4>
+        </div>
+    <%end%>    
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table">
+        <thead>
+          <tr>
+            <th>Usuários</th>
+
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @usuarios.each do |usuario| %>
+            <tr>
+              <td><%= usuario.nome %></td>
+              <td><%= usuario.email %></td>
+              <td style="width: 5%;"><%= link_to 'Apagar', usuario, method: :delete, data: { confirm: 'Deseja apagar esse registro ?' }, class: "btn btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+    </div>
+  </div>
+</div>

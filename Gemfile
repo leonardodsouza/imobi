@@ -10,6 +10,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'will_paginate-bootstrap'
 gem 'ckeditor'
+gem 'social-share-button'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.2'
 # Use postgresql as the database for Active Record

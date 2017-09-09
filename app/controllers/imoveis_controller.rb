@@ -33,7 +33,7 @@ class ImoveisController < ApplicationController
 
   # GET /imoveis/new
   def new
-    @imovel = Imovel.imoveis.new
+    @imovel = Imovel.new
   end
 
   # GET /imoveis/1/edit
@@ -45,7 +45,7 @@ class ImoveisController < ApplicationController
   # POST /imoveis
   # POST /imoveis.json
   def create
-    @imovel = Imovel.imoveis.new(imovel_params)
+    @imovel = Imovel.new(imovel_params)
 
     respond_to do |format|
       if @imovel.save
@@ -84,6 +84,6 @@ class ImoveisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def imovel_params
-      params.require(:imovel).permit(:capa, :usuario_id, :categoria_id, :tipo_id, :situacao_id, :cidade_id, :bairro_id, :descricao, :dormitorios, :banheiros, :garagem, :area, :valor, :visualizacoes)
+      params.require(:imovel).permit(:capa, :categoria_id, :tipo_id, :situacao_id, :cidade_id, :bairro_id, :descricao, :dormitorios, :banheiros, :garagem, :area, :valor, :visualizacoes)
     end
 end

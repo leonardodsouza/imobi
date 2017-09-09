@@ -15,4 +15,5 @@
 //= require jquery_nested_form
 //= require bootstrap
 //= require ckeditor/init
+//= require social-share-button
 //= require_tree .

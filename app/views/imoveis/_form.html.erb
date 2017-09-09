@@ -18,7 +18,6 @@
   }
 </script>
 <%= form_with(model: imovel, local: true) do |form| %>
- 
   <% if imovel.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger" role="alert">
@@ -42,15 +41,15 @@
     <div class="row">
       <div class="col-md-4">
         <%= form.label :categoria_id %>
-        <%= form.collection_select(:categoria_id, Categoria.all.order(:nome), :id, :nome, {prompt: "Selecine a categoria"}, {class: "form-control"}) %>
+        <%= form.collection_select(:categoria_id, Categoria.all.order(:nome), :id, :nome, {prompt: "Selecine a categoria"}, {class: "form-control", required: true}) %>
       </div>
       <div class="col-md-4">
         <%= form.label :tipo_id %>
-        <%= form.collection_select(:tipo_id, Tipo.all.order(:nome), :id, :nome, {prompt: "Selecione o tipo de imóvel"}, {class: "form-control"}) %>
+        <%= form.collection_select(:tipo_id, Tipo.all.order(:nome), :id, :nome, {prompt: "Selecione o tipo de imóvel"}, {class: "form-control", required: true}) %>
       </div>
       <div class="col-md-4">
         <%= form.label :situacao_id %>
-        <%= form.collection_select(:situacao_id, Situacao.all.order(:nome), :id, :nome, {prompt: "Selecione a situação"}, {class: "form-control"}) %>
+        <%= form.collection_select(:situacao_id, Situacao.all.order(:nome), :id, :nome, {prompt: "Selecione a situação"}, {class: "form-control", required: true}) %>
       </div>
     </div>
   </div>
@@ -59,18 +58,18 @@
     <div class="row">
       <div class="col-md-4">
         <%= form.label :cidade_id %>
-        <%= form.collection_select(:cidade_id, Cidade.all.order(:nome), :id, :nome, {prompt: "Selecione a cidade"}, {class: "form-control"}) %>
+        <%= form.collection_select(:cidade_id, Cidade.all.order(:nome), :id, :nome, {prompt: "Selecione a cidade"}, {class: "form-control", required: true}) %>
       </div>
       <div class="col-md-8">
         <%= form.label :bairro_id %>
-        <%= form.collection_select(:bairro_id, Bairro.all.order(:nome), :id, :nome,{prompt: ""}, {class: "form-control", :disabled => "disabled"}) %>
+        <%= form.collection_select(:bairro_id, Bairro.all.order(:nome), :id, :nome,{prompt: ""}, {class: "form-control", :disabled => "disabled", required: true}) %>
       </div>
     </div>
   </div>
 
   <div class="form-group">
     <%= form.label :descricao %>
-    <%= form.text_area :descricao, id: :imovel_descricao, class: "form-control" %>
+    <%= form.text_area :descricao, id: :imovel_descricao, required: true, class: "form-control" %>
   </div>
 
   <div class="form-group">
@@ -94,15 +93,15 @@
     <div class="row">
       <div class="col-md-4">
         <%= form.label :area %>
-        <%= form.number_field :area, id: :imovel_area, class: "form-control" %>
+        <%= form.number_field :area, id: :imovel_area, required: true, class: "form-control" %>
       </div>
       <div class="col-md-4">
         <%= form.label :valor %>
-        <%= form.number_field :valor, id: :imovel_valor, class: "form-control" %>
+        <%= form.number_field :valor, id: :imovel_valor, required: true, class: "form-control" %>
       </div>
       <div class="col-md-4">
         <%= form.label :capa %>
-        <%= form.file_field :capa, id: :imovel_capa, class: "form-control" %>
+        <%= form.file_field :capa, id: :imovel_capa, required: true, class: "form-control" %>
       </div>
     </div>
   </div>

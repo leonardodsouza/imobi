@@ -4,14 +4,15 @@
   <div class="form-group">
     <div class="row">
       <div class="col-md-4">
-        <%= form.label :img %>
+       
         <%= form.file_field :img, id: :foto_img, class: "form-control" %>
       </div>
       <div class="col-md-4">
-        <%= form.label :legenda %>
-        <%= form.text_field :legenda, id: :foto_legenda, class: "form-control" %>
+        
+        <%= form.text_field :legenda, id: :foto_legenda, placeholder: "Legenda da foto", class: "form-control" %>
       </div>
       <div class="col-md-4">
+        
         <%= form.submit class: "btn btn btn-primary" %>
       </div>
     </div>
