@@ -6,7 +6,7 @@ class EmailsMailer < ActionMailer::Base
         @email = cliente.email
         @telefone = cliente.telefone
         @mensagem = cliente.mensagem
-        mail(to: 'leonardodsouza@gmail.com', subject: 'Contato vindo do site')
+        mail(to: 'imob.buenosaires@hotmail.com', subject: 'Contato vindo do site')
     end
 
     def informacoes(cliente, link)
@@ -16,7 +16,7 @@ class EmailsMailer < ActionMailer::Base
         @telefone = cliente.telefone
         @mensagem = cliente.mensagem
         @link = link
-        mail(to: 'leonardodsouza@gmail.com', subject: 'Solicitação de mais informações')
+        mail(to: 'imob.buenosaires@hotmail.com', subject: 'Solicitação de mais informações')
     end
 
     def favoritos(cliente, link)
@@ -41,7 +41,7 @@ class EmailsMailer < ActionMailer::Base
         @area = anuncio.area
         @valor = anuncio.valor
         @descricao = anuncio.descricao
-        mail(to: 'leonardodsouza@gmail.com', subject: 'Solicitação para anúncio')
+        mail(to: 'imob.buenosaires@hotmail.com', subject: 'Solicitação para anúncio')
     end
 
 end

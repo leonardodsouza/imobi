@@ -29,7 +29,7 @@ class DestaquesController < ApplicationController
 
     respond_to do |format|
       if @destaque.save
-        format.html { redirect_to @destaque, notice: 'Destaque was successfully created.' }
+        format.html { redirect_to destaques_path, notice: 'Destaque was successfully created.' }
         format.json { render :show, status: :created, location: @destaque }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class DestaquesController < ApplicationController
   def update
     respond_to do |format|
       if @destaque.update(destaque_params)
-        format.html { redirect_to @destaque, notice: 'Destaque was successfully updated.' }
+        format.html { redirect_to destaques_path, notice: 'Destaque was successfully updated.' }
         format.json { render :show, status: :ok, location: @destaque }
       else
         format.html { render :edit }
