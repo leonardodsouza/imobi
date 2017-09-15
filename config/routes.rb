@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :proprietarios
   root to: 'home#index'
   resources :anuncios
   resources :artigos

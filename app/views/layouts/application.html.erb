@@ -11,10 +11,10 @@
 
   <body>
     <div class="menu">
-        <%= render 'layouts/menu'%>  
-
+        <%= render 'layouts/menu'%> 
+    </div>
+    <div class="container">
         <%= render 'carousel' if controller.controller_name == 'home' %>
- 
     </div>
     <%= yield %>
 

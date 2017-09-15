@@ -39,6 +39,12 @@ class ImoveisController < ApplicationController
   # GET /imoveis/1/edit
   def edit
     @foto = Foto.new
+    if @imovel.proprietarios.present?
+      @proprietario = Proprietario.find_by_imovel_id(@imovel.id)
+      @imprimir = 'sim'
+    else
+      @proprietario = Proprietario.new
+    end
     @fotos = Foto.where('imovel_id =?', @imovel).order(created_at: :desc)
   end
 
@@ -84,6 +90,6 @@ class ImoveisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def imovel_params
-      params.require(:imovel).permit(:capa, :categoria_id, :tipo_id, :situacao_id, :cidade_id, :bairro_id, :descricao, :dormitorios, :banheiros, :garagem, :area, :valor, :visualizacoes)
+      params.require(:imovel).permit(:capa, :categoria_id, :tipo_id, :situacao_id, :cidade_id, :bairro_id, :descricao, :dormitorios, :banheiros, :garagem, :area, :area_construida, :valor, :visualizacoes)
     end
 end

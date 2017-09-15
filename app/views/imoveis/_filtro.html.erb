@@ -9,7 +9,7 @@
   
   function buscaBairros(id) {
     $.getJSON("/cities_by_state", id, function(j) {
-      var options = '<option value="">Selecione o bairro</option>';
+      var options = '<option value="">Todos</option>';
       $.each(j.cty, function(i, item) {
         options += '<option value="' + item.id + '">' + item.n + '</option>';
       });
@@ -51,38 +51,47 @@
         <%= form_tag imoveis_path, id: "filtro" , method: :get do %>
         
         <div class="form-group">
-            <%= select_tag :categoria, options_from_collection_for_select(Categoria.all.order(:nome), "id", "nome", @categoria), prompt: "Selecione a categoria", class: "form-control" %>
-        </div>
-
-        <div class="form-group">    
-            <%= select_tag :tipo, options_from_collection_for_select(Tipo.all.order(:nome), "id", "nome", @tipo), prompt: "Selecione o tipo", class: "form-control" %>
+            <%= label_tag ("Categoria") %>
+            <%= select_tag :categoria, options_from_collection_for_select(Categoria.all.order(:nome), "id", "nome", @categoria), prompt: "Todas as categorias", class: "form-control" %>
         </div>
 
         <div class="form-group">
-            <%= select_tag :cidade, options_from_collection_for_select(Cidade.all.order(:nome), "id", "nome", @cidade), prompt: "Selecione a cidade", class: "form-control" %>
+            <%= label_tag ("Tipo") %>    
+            <%= select_tag :tipo, options_from_collection_for_select(Tipo.all.order(:nome), "id", "nome", @tipo), prompt: "Todos os tipos", class: "form-control" %>
         </div>
 
         <div class="form-group">
-            <%= select_tag :bairro, options_from_collection_for_select(Bairro.all.order(:nome), "id", "nome", @bairro), prompt: "Selecione o bairro", class: "form-control"%>
+            <%= label_tag ("Cidade") %>
+            <%= select_tag :cidade, options_from_collection_for_select(Cidade.all.order(:nome), "id", "nome", @cidade), prompt: "Todas as cidades", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= label_tag ("Bairro") %>
+            <%= select_tag :bairro, options_from_collection_for_select(Bairro.all.order(:nome), "id", "nome", @bairro), prompt: "Todos os bairros", class: "form-control"%>
         </div>    
 
         <div class="form-group">
-            <%= select_tag :dormitorios, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @dormitorios), prompt: "Nº de dormitórios" , class: "form-control" %>
+            <%= label_tag ("Dormitórios") %>
+            <%= select_tag :dormitorios, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @dormitorios), prompt: "Qualquer número de dormitórios" , class: "form-control" %>
         </div> 
 
         <div class="form-group">
-            <%= select_tag :banheiros, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @banheiros), prompt: "Nº de banheiros" , class: "form-control" %>
+            <%= label_tag ("banheiros") %>
+            <%= select_tag :banheiros, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @banheiros), prompt: "Qualquer número de banheiros" , class: "form-control" %>
         </div>                     
         
         <div class="form-group">
-            <%= select_tag :garagem, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @garagem), prompt: "Nº de garagens" , class: "form-control" %>
+            <%= label_tag ("Garagem") %>
+            <%= select_tag :garagem, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], @garagem), prompt: "Qualquer número vagas" , class: "form-control" %>
         </div>
 
         <div class="form-group">
+                <%= label_tag ("Preço mínimo") %>
             <%= text_field_tag :preco_minimo, @preco_minimo, placeholder: "R$ valor mínimo", class: "form-control" %>
         </div>
 
         <div class="form-group">
+            <%= label_tag ("Preço máximo") %>
             <%= text_field_tag :preco_maximo, @preco_maximo, placeholder: "R$ valor máximo",  class: "form-control" %>
         </div>
 

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="page-header">
+    <p id="notice"><%= notice %></p>
+    <h3>Proprietarios</h3>
+  </div>  
+  <%= link_to 'Novo Proprietario', new_proprietario_path , class: "btn btn btn-primary"%>
+  </br>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+              <th>Imovel</th>
+              <th>Nome</th>
+              <th>Telefone</th>
+              <th>Email</th>
+              <th>Nascimento</th>
+              <th>Endereco</th>
+              <th>Profissao</th>
+              <th>Estado civil</th>
+              <th>Conjuge</th>
+              <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @proprietarios.each do |proprietario| %>
+        <tr>
+          <td><%= proprietario.imovel %></td>
+          <td><%= proprietario.nome %></td>
+          <td><%= proprietario.telefone %></td>
+          <td><%= proprietario.email %></td>
+          <td><%= proprietario.nascimento %></td>
+          <td><%= proprietario.endereco %></td>
+          <td><%= proprietario.profissao %></td>
+          <td><%= proprietario.estado_civil %></td>
+          <td><%= proprietario.conjuge %></td>
+          <td style="width: 5%;"><%= link_to 'Visualizar', proprietario , class: "btn btn btn-default"%></td>
+          <td style="width: 5%;"><%= link_to 'Editar', edit_proprietario_path(proprietario), class: "btn btn btn-primary" %></td>
+          <td style="width: 5%;"><%= link_to 'Apagar', proprietario, method: :delete, data: { confirm: 'Deseja apagar esse registro ?' }, class: "btn btn btn-danger" %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>   
+</div>

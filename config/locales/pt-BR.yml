@@ -5,6 +5,7 @@ pt-BR:
     imovel: Imóvel
     foto: Fotos
     anuncio: Anúncios
+    proprietario: Proprietários
   attributes:
     usuario:
       nome: Nome
@@ -20,7 +21,8 @@ pt-BR:
       dormitorios: Dormitórios
       banheiros: Banheiros
       garagem: Garagens (número de vagas)
-      area: Área (m²)
+      area: Área total (m²)
+      area_construida: Área construida (m²)
       valor: Valor
       visualizacoes: Visualizações
       capa: Foto da capa do anúncio
@@ -40,4 +42,13 @@ pt-BR:
       area: Área (m²)
       valor: Valor
       visualizacoes: Visualizações
-      capa: Foto da capa do anúncio       
+      capa: Foto da capa do anúncio 
+    proprietario:
+      nome: Nome completo
+      telefone: Telefone
+      email: E-mail
+      nascimento: Data de nascimento
+      endereco: Endereço
+      profissao: Profissão 
+      estado_civil: Estado civil
+      conjuge: Cônjuge

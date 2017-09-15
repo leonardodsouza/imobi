@@ -96,10 +96,14 @@
       <%= form.number_field :area, id: :imovel_area, class: "form-control" %>
     </div>
     <div class="col-md-3">
+      <%= form.label :area_construida %>
+      <%= form.number_field :area_construida, id: :imovel_area, class: "form-control" %>
+    </div>
+    <div class="col-md-2">
       <%= form.label :valor %>
       <%= form.number_field :valor, id: :imovel_valor, class: "form-control" %>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-3">
      <%= form.label :capa %>
      <%= form.file_field :capa, id: :imovel_capa, class: "form-control" %>
     </div>

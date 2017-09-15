@@ -99,12 +99,23 @@
         <li class="list-group-item label-group">
             <div class="label-descricao">
                 <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
-                <strong>Area:</strong>
+                <strong>Area total:</strong>
             </div>    
             <div class="label-dados"> 
                 <%= @imovel.area %> m²
             </div>    
         </li>
+        <% if @imovel.area_construida.present? %>
+        <li class="list-group-item label-group ">
+            <div class="label-descricao"> 
+                <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+                <strong>Área construida:</strong>
+            </div> 
+            <div class="label-dados">    
+                <%= @imovel.area_construida %> m²
+            </div>    
+        </li>
+    <%end%>
 
     </ul>
 

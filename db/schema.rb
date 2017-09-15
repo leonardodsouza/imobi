@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170908213551) do
+ActiveRecord::Schema.define(version: 20170915113707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20170908213551) do
     t.string "capa_content_type"
     t.integer "capa_file_size"
     t.datetime "capa_updated_at"
+    t.integer "area_construida"
     t.index ["bairro_id"], name: "index_imoveis_on_bairro_id"
     t.index ["categoria_id"], name: "index_imoveis_on_categoria_id"
     t.index ["cidade_id"], name: "index_imoveis_on_cidade_id"
@@ -145,6 +146,21 @@ ActiveRecord::Schema.define(version: 20170908213551) do
     t.datetime "updated_at", null: false
     t.string "visualizado"
     t.index ["imovel_id"], name: "index_mensagens_on_imovel_id"
+  end
+
+  create_table "proprietarios", force: :cascade do |t|
+    t.bigint "imovel_id"
+    t.string "nome"
+    t.string "telefone"
+    t.string "email"
+    t.date "nascimento"
+    t.string "endereco"
+    t.string "profissao"
+    t.string "estado_civil"
+    t.string "conjuge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imovel_id"], name: "index_proprietarios_on_imovel_id"
   end
 
   create_table "situacoes", force: :cascade do |t|
@@ -194,4 +210,5 @@ ActiveRecord::Schema.define(version: 20170908213551) do
   add_foreign_key "imoveis", "situacoes"
   add_foreign_key "imoveis", "tipos"
   add_foreign_key "mensagens", "imoveis"
+  add_foreign_key "proprietarios", "imoveis"
 end

@@ -2,7 +2,8 @@
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descrição</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Fotos</a></li>
+    <li role="presentation"><a href="#fotos" aria-controls="fotos" role="tab" data-toggle="tab">Fotos</a></li>
+    <li role="presentation"><a href="#proprietarios" aria-controls="proprietarios" role="tab" data-toggle="tab">Proprietarios</a></li>
    </ul>
 
   <!-- Tab panes -->
@@ -14,13 +15,18 @@
       </div>
     </div>
     
-    <div role="tabpanel" class="tab-pane" id="profile">
+    <div role="tabpanel" class="tab-pane" id="fotos">
       <%= render 'fotos/form', foto: @foto %>
       <div id="lista">
         <%= render 'fotos/lista' %>
       </div>
       
     </div>
+
+    <div role="tabpanel" class="tab-pane" id="proprietarios">
+      <%= render 'proprietarios/form', proprietario: @proprietario %>
+
+    </div>    
 
   </div>
 </div>

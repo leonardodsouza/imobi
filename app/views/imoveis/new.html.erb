@@ -3,16 +3,22 @@
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Descrição</a></li>
     <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Fotos</a></li>
+    <li role="presentation" ><a href="#proprietario" aria-controls="proprietario" role="tab" data-toggle="tab">Proprietário</a></li>
    </ul>
 
   
    <!-- Tab panes -->
   <div class="tab-content">
+    
     <div role="tabpanel" class="tab-pane active" id="home">
       <%= render 'form', imovel: @imovel %>
     </div>
     
     <div role="tabpanel" class="tab-pane" id="profile">
+      <p>Primeiro adicione as descrições do imóvel</p>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="proprietario">
       <p>Primeiro adicione as descrições do imóvel</p>
     </div>
     
