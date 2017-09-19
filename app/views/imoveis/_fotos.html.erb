@@ -10,7 +10,11 @@
   </div>
       
     <div class="page-header">
-        <h3><%= @imovel.tipo.nome.upcase %> (<%= @imovel.area %> m²) EM <%= @imovel.cidade.nome.upcase %> BAIRRO <%= @imovel.bairro.nome.upcase %></h3>
+      <% if @imovel.tipo_id == 3 %>
+        <h3><%= @imovel.tipo.nome.upcase %> <% if @imovel.area.present? %>(<%= @imovel.area %> m²) <%end%> EM <%= @imovel.cidade.nome.upcase %> BAIRRO <%= @imovel.bairro.nome.upcase %></h3>
+      <%else%>
+        <h3><%= @imovel.tipo.nome.upcase %> <% if @imovel.area_construida.present? %>(<%= @imovel.area_construida %> m²) <%end%> EM <%= @imovel.cidade.nome.upcase %> BAIRRO <%= @imovel.bairro.nome.upcase %></h3>
+      <%end%>
     </div>
     <div class="col-md-12">  
       <div class="gallery">

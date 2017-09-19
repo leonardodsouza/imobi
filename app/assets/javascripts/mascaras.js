@@ -8,9 +8,9 @@ new w(this,a,g))})};d.fn.unmask=function(){return this.each(function(){d(this).d
 
 //mascaras
 $(document).ready(function(){
-    $("#preco_minimo").mask("999999");
-    $("#preco_maximo").mask("999999");
-    $("#imovel_valor").mask("999999");
+    $("#preco_minimo").mask("9999999");
+    $("#preco_maximo").mask("9999999");
+    $("#imovel_valor").mask("9999999");
     $("#proprietario_telefone").mask("(99)999999999");
 });
 

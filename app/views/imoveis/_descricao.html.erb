@@ -95,16 +95,17 @@
                 </div>    
             </li>
         <%end%>
-
+        <% if @imovel.area > 0 %>
         <li class="list-group-item label-group">
             <div class="label-descricao">
                 <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
-                <strong>Area total:</strong>
+                <strong>Área do terreno:</strong>
             </div>    
             <div class="label-dados"> 
                 <%= @imovel.area %> m²
             </div>    
         </li>
+        <%end%>
         <% if @imovel.area_construida.present? %>
         <li class="list-group-item label-group ">
             <div class="label-descricao"> 

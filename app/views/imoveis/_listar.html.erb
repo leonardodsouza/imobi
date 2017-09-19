@@ -30,7 +30,12 @@
                         <div class="imovel">
                             <div class="col-md-6 nome">
                                 <h4>
-                                    <%= imovel.tipo.nome %> <%= imovel.area %> m²
+                                    <%= imovel.tipo.nome %> 
+                                    <% if imovel.tipo_id == 3 %>
+                                        <% if imovel.area.present? %>(<%= imovel.area %> m²) <%end%>
+                                    <%else%>
+                                        <% if imovel.area_construida.present? %>(<%= imovel.area_construida %> m²) <%end%>
+                                    <%end%>
                                 </h4>    
                             </div>
                             <div class="col-md-6 valor">
