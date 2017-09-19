@@ -80,6 +80,7 @@
                     <h3><%= imovel.tipo.nome %> <%= imovel.area %>m²</h3>
                     <p><span><%= imovel.cidade.nome %>, <%= imovel.bairro.nome %></span></p>
                     <p>
+                        <h4><%= number_to_currency_br(imovel.valor) %></h4>
                         <%= link_to 'Visualizar', imovel , class: "btn btn btn-primary" %>
                         <%= link_to  edit_favorito_path(imovel) , remote: true, class: "btn btn-default" do %>
                             <span class="glyphicon glyphicon-envelope"></span> Enviar e-mail
