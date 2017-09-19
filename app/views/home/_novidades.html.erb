@@ -14,7 +14,14 @@
             <div class="thumbnail">
 
                 <div class="caption">
-                    <h3><%= imovel.tipo.nome %> <%= imovel.area %>m²</h3>
+                    <h3>
+                        <%= imovel.tipo.nome %> <br>
+                        <% if imovel.tipo_id == 3 %>
+                            <% if imovel.area.present? %>(<%= imovel.area %> m²) <%end%>
+                        <%else%>
+                            <% if imovel.area_construida.present? %>(<%= imovel.area_construida %> m²) <%end%>
+                        <%end%>
+                    </h3>
                     <p><span><%= imovel.cidade.nome %>, <%= imovel.bairro.nome %></span></p>
                     <p>
                         <%= link_to 'Visualizar', imovel , class: "btn btn btn-primary" %>
