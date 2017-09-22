@@ -20,7 +20,7 @@
       <div class="gallery">
         <ul id="lightgallery" class="list-unstyled row">
             <%= image_tag  "vendido.png", class: "img-responsive vendido-capa" if @imovel.situacao_id == 3 %>
-          <li data-responsive="<%= @imovel.capa.url(:foto) %>" data-src="<%= @imovel.capa.url(:foto) %>" data-sub-html="Foto do imóvel">
+          <li data-responsive="<%= @imovel.capa.url(:medium) %>" data-src="<%= @imovel.capa.url(:medium) %>" data-sub-html="Foto do imóvel">
             <a href="">
               <%= image_tag @imovel.capa.url(:medium), class: "img-responsive img-capa"%>
             </a>
