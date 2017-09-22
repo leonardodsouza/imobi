@@ -7,8 +7,8 @@ class Imovel < ApplicationRecord
   has_many :fotos, :dependent => :destroy
   has_many :mensagens, :dependent => :destroy
   has_many :proprietarios
-  validates_presence_of :categoria_id, :tipo_id, :situacao_id, :cidade_id, :bairro_id, :descricao, :capa, :area, :valor
-  has_attached_file :capa, styles: { medium: "465x320#", lista: "240X200#", thumb: "150x150#" }
+  validates_presence_of :categoria_id, :tipo_id, :situacao_id, :cidade_id, :bairro_id, :descricao, :capa, :valor
+  has_attached_file :capa, styles: { foto: "800X800>", medium: "465x320#", lista: "240X200#", thumb: "150x150#" }
   validates_attachment_content_type :capa, content_type: /\Aimage\/.*\z/
 
     
